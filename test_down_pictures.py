@@ -19,7 +19,10 @@ async def download_page(url:str):
             await button_locator.click()
         else:
             print("没有找到按钮")
-        for i in range(50):
+        for i in range(100):
+            next_button_locator=page.locator(".ContentItem-more").first
+            if await next_button_locator.count()>0:
+                await next_button_locator.click()
             await page.keyboard.press("PageDown")
             await asyncio.sleep(1)
         all_pictures=[]
@@ -35,8 +38,8 @@ async def download_page(url:str):
             print("没有找到")
     return all_pictures
 async def main():
-    url="https://www.zhihu.com/question/651244577/answer/3451264332"
-    all_output_path="C:/Users/iiijj/Desktop/genshin"
+    url="https://www.zhihu.com/search?q=%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E7%BE%8E%E5%9B%BE&search_source=Suggestion&utm_content=search_suggestion&type=content"
+    all_output_path="C:/Users/iiijj/Desktop/shenzi"
     all_pictures=await download_page(url)
     async with aiohttp.ClientSession() as session:
         for i, pictures in enumerate(all_pictures):
