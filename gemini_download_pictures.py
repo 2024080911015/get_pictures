@@ -86,8 +86,8 @@ async def download_page(url: str):
 async def main():
     # --- 调试信息 ---
     print("--- 程序开始 ---")
-    url = "https://www.zhihu.com/search?q=%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E7%BE%8E%E5%9B%BE&search_source=Suggestion&utm_content=search_suggestion&type=content"
-    all_output_path = "C:/Users/iiijj/Desktop/shenzi"
+    url = input("请输入目标url,示例:https://www.zhihu.com/search?q=%E5%85%AB%E9%87%8D%E7%A5%9E%E5%AD%90%E7%BE%8E%E5%9B%BE&search_source=Suggestion&utm_content=search_suggestion&type=content")
+    all_output_path = input("请输入存储路径，示例：C:/Users/iiijj/Desktop/shenzi")
 
     # 确保文件夹存在
     if not os.path.exists(all_output_path):
